@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cute Tetris</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <audio id="bgmusic" src="sound/best-game-console.mp3" loop></audio>
+    <canvas width="300" height="600" id="screen"></canvas>
+    <button id="playbutton">Play</button>
+
+    
+    <script src="tetris.js"></script>
+    <script src="render.js"></script>
+    <script src="controller.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("playbutton").addEventListener("click", playButtonClicked);
+        });
+    </script>
+</body>
+
+</html>
