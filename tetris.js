@@ -95,6 +95,7 @@ function rotate(current) {
     return newCurrent;
 }
 
+
 function clearLines() {
     for (var y = ROWS - 1; y >= 0; --y) {
         var rowFilled = true;
@@ -105,12 +106,23 @@ function clearLines() {
             }
         }
         if (rowFilled) {
-            document.getElementById('bgmusic').play();
+            let bgmusic = document.getElementById('bgmusic');
+            let lineclear = document.getElementById('lineclear');
+            if (bgmusic instanceof HTMLAudioElement && lineclear instanceof HTMLAudioElement) {
+                bgmusic.pause();
+                lineclear.currentTime = 0;
+                lineclear.play();
+                lineclear.onended = function () {
+                    bgmusic.play();
+                };
+            }
+
             for (var yy = y; yy > 0; --yy) {
                 for (var x = 0; x < COLS; ++x) {
                     board[yy][x] = board[yy - 1][x];
                 }
             }
+
             ++y;
         }
     }
